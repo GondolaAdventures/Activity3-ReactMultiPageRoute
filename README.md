@@ -50,5 +50,5 @@ Follow these steps to set up and run the project locally:
     npm install react-scripts@latest
 5.  Start the Development Server:
     Launch the application:
-   ```bash
+    ```bash
     npm start
