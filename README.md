@@ -38,13 +38,17 @@ Follow these steps to set up and run the project locally:
    git clone https://github.com/GondolaAdventures/Activity3-ReactMultiPageRoute.git
 2. **Change Directory:**
     Navigate to the cloned repository:
+    ```bash
     cd Activity3-ReactMultiPageRoute
 3. **Install Dependencies:**
     Install the required packages:
+    ```bash
     npm install
 4.  **Update React Scripts:**
     Install the latest version of react-scripts to ensure compatibility:
+    ```bash
     npm install react-scripts@latest
 5.  Start the Development Server:
     Launch the application:
+   ```bash
     npm start
