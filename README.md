@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# Multipage React Site with Routing, Dark Mode, and Online Images
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This repository contains a multipage React application built as a college project. The application demonstrates:
+- **Routing:** Implemented using `react-router-dom` v6 to navigate between pages.
+- **Data Handling:** A custom hook (`useFetch.js`) for fetching data asynchronously.
+- **Dynamic Pages:** Includes Home, About, Contact, and Article pages, with a dedicated 404 (NotFound) page for unmatched routes.
+- **Dark Mode/Light Mode Toggle:** Users can switch between dark and light themes.
+- **Online Images:** The Home page displays a dynamically loaded image from Unsplash.
+- **Responsive Design:** Clean and responsive styling with hover effects and a consistent layout.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Routing & Navigation:**
+  - The Home page lists articles with links to the full content.
+  - The Article page uses URL parameters to display individual articles.
+  - The About and Contact pages provide static and query-based content respectively.
+  - A dedicated NotFound page handles unknown routes.
+  
+- **Dark Mode Toggle:**
+  - A button in the global navigation toggles dark mode on and off.
+  - Dark mode is implemented by adding a CSS class to the document body.
+  
+- **Online Images:**
+  - The Home page includes an image fetched from Unsplash.
+  
+- **Custom Hooks:**
+  - The `useFetch` hook encapsulates logic for asynchronous data fetching.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Installation and Setup
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Follow these steps to set up and run the project locally:
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. **Clone the Repository:**  
+   Open your terminal and run:
+   ```bash
+   git clone https://github.com/GondolaAdventures/Activity3-ReactMultiPageRoute.git
+2. **Change Directory:**
+    Navigate to the cloned repository:
+    cd Activity3-ReactMultiPageRoute
+3. **Install Dependencies:**
+    Install the required packages:
+    npm install
+4.  **Update React Scripts:**
+    Install the latest version of react-scripts to ensure compatibility:
+    npm install react-scripts@latest
+5.  Start the Development Server:
+    Launch the application:
+    npm start
