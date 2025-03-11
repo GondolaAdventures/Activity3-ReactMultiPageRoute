@@ -1,29 +1,42 @@
-import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom"
+import {getDoc, doc} from 'firebase/firestore';
+import {db} from '../firebase/config'
+import { useEffect,useState } from 'react';
 
-export default function Article({ articles }) {
-  const { urlId } = useParams();
-  const navigate = useNavigate();
+export default function Article() {
+  const { urlId } = useParams()
+  const navigate = useNavigate()
 
-  const article = articles.find(({ id }) => id === urlId);
+  console.log("id: " + urlId)
+
+  const [article, setArticle] = useState(null);
 
   useEffect(() => {
-    if (!article) {
-      // Immediately redirect if no article is found.
-      navigate('/');
-    }
-  }, [article, navigate]);
+    const ref = doc(db, 'articles', urlId);
+    getDoc(ref)
+      .then((snapshot)=>{        
+        setArticle(snapshot.data());
+      })
+
+  },[])  
+  
+
+  // if (!article) {
+  //   setTimeout(() => {
+  //     navigate('/')
+  //   }, 2000)
+  // }
 
   return (
     <div>
-      {!article && <p>No record found. Redirecting...</p>}
+      {!article && <p>No records found!</p>}
       {article && (
         <div key={article.id}>
           <h2>{article.title}</h2>
           <p>By {article.author}</p>
-          <p>{article.body}</p>
+          <p>{article.description}</p>
         </div>
       )}
     </div>
-  );
+  )
 }
