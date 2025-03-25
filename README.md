@@ -96,8 +96,4 @@ This repository contains a multipage React application demonstrating routing, Fi
 - **Contact / About**: Example static pages showcasing routing.  
 - **404 NotFound**: Displays a custom message for invalid routes.
 
-## Contributing
-
-Contributions and feedback are welcome! Feel free to submit issues or pull requests.
-
 **Happy coding!** 🚀
