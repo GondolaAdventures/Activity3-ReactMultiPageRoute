@@ -1,19 +1,17 @@
-import {initializeApp} from 'firebase/app'
-import {getFirestore} from 'firebase/firestore'
+import { initializeApp } from 'firebase/app'
+import { getFirestore } from 'firebase/firestore'
 import 'firebase/auth'
 
 const firebaseConfig = {
-  apiKey: "apiKey",
-  authDomain: "authDomain",
-  projectId: "projectId",
-  storageBucket: "storageBucket",
+  apiKey: "AIzaSyDhCBiX7VBhiRft0RxCFJp1OodJD_qzJ5U",
+  authDomain: "articledemo-5edb7.firebaseapp.com",
+  projectId: "articledemo-5edb7",
+  storageBucket: "articledemo-5edb7.firebasestorage.app",
   messagingSenderId: "1020340575348",
-  appId: "1020340575348"
+  appId: "1:1020340575348:web:79bec1827a65ba38668521"
 };
 
-  initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
+const db = getFirestore();
 
-  const db = getFirestore();
-
-
-  export {db}
+export { db }

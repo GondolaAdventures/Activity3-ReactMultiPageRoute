@@ -1,0 +1,26 @@
+.profile {
+    color: #555;
+    max-width: 480px;
+    margin: 60px auto;
+    padding: 20px;
+    border: 1px solid #e4e4e4;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: #fff;
+  }
+  
+  .pageTitle {
+    text-align: center;
+    color: #58249c;
+    margin-bottom: 20px;
+  }
+  
+  .profileInfo {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  .profileInfo strong {
+    font-weight: bold;
+  }
+  
