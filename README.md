@@ -32,7 +32,7 @@ This repository contains a multipage React application demonstrating routing, Fi
 2. **Navigate into the Project Directory**
 
    ```bash
-   cd YourRepoName
+   cd Activity3-ReactMultiPageRoute
    ```
 
 3. **Install Dependencies**
