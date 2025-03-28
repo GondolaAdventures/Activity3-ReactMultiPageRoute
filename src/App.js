@@ -1,76 +1,65 @@
-// File: src/App.js
+// App.js
+import React, { useContext, useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
-import React, { useState, useEffect } from 'react'
-import { BrowserRouter, Route, NavLink, Routes, Navigate } from 'react-router-dom'
-import './App.css'
+// Import your pages
+import Landing from './pages/Landing'
+import DoctorLogin from './pages/login/DoctorLogin'
+import PatientLogin from './pages/login/PatientLogin'
+import PatientSignup from './pages/signup/PatientSignup'
+import DoctorDashboard from './pages/DoctorDashboard'
+import PatientHome from './pages/PatientHome'
+import CreateOrEditPost from './pages/CreateOrEditPost'
+import PostDetails from './pages/PostDetails'
+import NotFound from './pages/NotFound'
 
-// Firebase imports
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
-
-// Page components
-import About from './pages/About'
-import Contact from './pages/Contact'
-import Home from './pages/Home'
-import Article from './pages/Article'
-import FormArticle from './pages/FormArticle'
-import Login from './pages/login/Login'
-import Signup from './pages/signup/Signup'  // New import for the Signup page
+// Import your ThemeContext
+import { ThemeContext } from './pages/ThemeContext'
+// Import your global CSS (which might define .light, .dark, etc.)
+import './index.css'
 
 function App() {
-  // Track user authentication status
-  const [user, setUser] = useState(null)
-  // Track whether we've finished checking auth state
-  const [initializing, setInitializing] = useState(true)
+  // Access the current theme from context
+  const { theme } = useContext(ThemeContext)
 
-  // Listen for auth state changes once the component mounts
+  // Whenever 'theme' changes, update the <body> class
   useEffect(() => {
-    const auth = getAuth()
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser)
-      setInitializing(false)
-    })
-    // Cleanup the listener on unmount
-    return () => unsubscribe()
-  }, [])
-
-  // Show a loading indicator while checking auth status
-  if (initializing) {
-    return <div>Loading...</div>
-  }
+    document.body.className = theme
+  }, [theme])
 
   return (
-    <div className="App">
-      <BrowserRouter>
-        {/* Navigation Bar */}
-        <nav className="navbar">
-          <h1>My Articles</h1>
-          <div className="nav-links">
-            <NavLink to="/" end>Home</NavLink>
-            <NavLink to="/about">About</NavLink>
-            <NavLink to="/contact">Contact</NavLink>
-            <NavLink to="/new">New Article</NavLink>
-          </div>
-        </nav>
-
-        {/* Define routes with conditional access */}
+    <Router>
+      <div className="App">
         <Routes>
-          {/* Protected routes (require user to be logged in) */}
-          <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
-          <Route path="/about" element={user ? <About /> : <Navigate to="/login" />} />
-          <Route path="/contact" element={user ? <Contact /> : <Navigate to="/login" />} />
-          <Route path="/articles/:urlId" element={user ? <Article /> : <Navigate to="/login" />} />
-          <Route path="/edit/:urlId" element={user ? <FormArticle /> : <Navigate to="/login" />} />
-          <Route path="/new" element={user ? <FormArticle /> : <Navigate to="/login" />} />
+          {/* Landing Page */}
+          <Route path="/" element={<Landing />} />
+          <Route path="/landing" element={<Landing />} />
 
-          {/* Public routes */}
-          <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
-          <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />
+          {/* Doctor Login */}
+          <Route path="/doctor-login" element={<DoctorLogin />} />
 
-          {/* Catch-all: redirect unknown paths to Home (which is also protected) */}
-          <Route path="/*" element={<Navigate to="/" />} />
+          {/* Patient Login & Signup */}
+          <Route path="/patient-login" element={<PatientLogin />} />
+          <Route path="/patient-signup" element={<PatientSignup />} />
+
+          {/* Doctor Dashboard */}
+          <Route path="/doctor" element={<DoctorDashboard />} />
+
+          {/* Patient Home */}
+          <Route path="/patient" element={<PatientHome />} />
+
+          {/* Create/Edit Post (Patient) */}
+          <Route path="/patient/create" element={<CreateOrEditPost />} />
+          <Route path="/patient/edit/:id" element={<CreateOrEditPost />} />
+
+          {/* Post Detail Page (Doctor or Patient view) */}
+          <Route path="/post/:id" element={<PostDetails />} />
+
+          {/* Catch-all for non-existing routes */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
-    </div>
+      </div>
+    </Router>
   )
 }
 

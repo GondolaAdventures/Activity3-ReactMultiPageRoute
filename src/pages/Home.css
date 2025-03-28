@@ -1,83 +1,123 @@
+/* Home.css */
+
+/* Container for the entire page */
 .home {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
 }
 
+/* Page title */
 .home h2 {
   color: #58249c;
   margin-bottom: 20px;
   text-align: center;
 }
 
-.search-bar {
+/* Filter controls (used in DoctorDashboard) */
+.filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
   margin-bottom: 20px;
-  text-align: center;
 }
 
-.search-bar input {
-  padding: 8px 12px;
-  width: 60%;
-  border: 1px solid #ccc;
+.filter-controls label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+.filter-controls select {
+  margin-top: 5px;
+  padding: 8px;
   border-radius: 4px;
 }
 
-.articles-list {
+/* Patient-specific controls (create button + category filter) */
+.patient-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.patient-controls label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+.patient-controls select {
+  margin-top: 5px;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.create-btn {
+  background-color: #58249c;
+  color: #fff;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.create-btn:hover {
+  background-color: #3e1a8c;
+}
+
+/* Posts list area */
+.posts-list {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
+/* Each post card */
 .card {
-  background: #fff;
   padding: 20px;
-  border: 1px solid #e4e4e4;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.card h3 {
-  margin: 0;
-  font-size: 1.4rem;
   color: #333;
+  cursor: pointer;
+  transition: transform 0.2s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border: 1px solid #e4e4e4;
 }
 
+/* Hover effect */
+.card:hover {
+  transform: scale(1.01);
+}
+
+/* Color coding: unresolved = red, resolved = green */
+.card.unresolved {
+  background-color: #ffd1d1; /* light red/pink */
+}
+
+.card.resolved {
+  background-color: #d4f7d0; /* light green */
+}
+
+/* Action buttons for edit/delete */
 .card-actions {
+  margin-top: 10px;
   display: flex;
   gap: 10px;
 }
 
-.icon {
+.card-actions button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
-  width: 24px;
-  height: 24px;
-  transition: transform 0.2s;
+  background-color: #58249c;
+  color: #fff;
+  transition: background 0.3s;
 }
 
-.icon:hover {
-  transform: scale(1.1);
-}
-
-.author {
-  font-size: 0.9rem;
-  color: #777;
-  margin: 10px 0;
-}
-
-.read-more {
-  display: inline-block;
-  text-decoration: none;
-  color: #58249c;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-.read-more:hover {
-  color: #333;
+.card-actions button:hover {
+  background-color: #3e1a8c;
 }

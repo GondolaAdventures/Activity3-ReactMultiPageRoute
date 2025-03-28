@@ -1,5 +1,5 @@
-.signup {
-    color: #555;
+/* PatientLogin.css */
+.patient-login-container {
     max-width: 480px;
     margin: 60px auto;
     padding: 20px;
@@ -7,30 +7,31 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     background: #fff;
+    color: #555;
   }
   
-  .pageTitle {
+  .page-title {
     text-align: center;
     color: #58249c;
     margin-bottom: 20px;
   }
   
-  .signup form {
+  .patient-login-form {
     display: flex;
     flex-direction: column;
   }
   
-  .signup label {
+  .patient-login-form label {
     margin-bottom: 15px;
   }
   
-  .signup label span {
+  .patient-login-form label span {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
   }
   
-  .signup input {
+  .patient-login-form input {
     width: 100%;
     padding: 8px 10px;
     border: 1px solid #ccc;
@@ -38,7 +39,7 @@
     font-size: 1rem;
   }
   
-  .signup button {
+  .login-btn {
     align-self: center;
     width: 120px;
     font-size: 1rem;
@@ -52,12 +53,30 @@
     transition: background 0.3s;
   }
   
-  .signup button:hover {
+  .login-btn:hover {
     background-color: #3e1a8c;
   }
   
   .error {
     color: red;
     text-align: center;
+    margin-top: 10px;
+  }
+  
+  .signup-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+  }
+  
+  .signup-link a {
+    color: #58249c;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  .signup-link a:hover {
+    color: #3e1a8c;
   }
   

@@ -1,5 +1,6 @@
-.create {
-  color: #555;
+/* DoctorLogin.css */
+
+.doctor-login-container {
   max-width: 480px;
   margin: 60px auto;
   padding: 20px;
@@ -7,6 +8,7 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   background: #fff;
+  color: #555;
 }
 
 .page-title {
@@ -15,23 +17,22 @@
   margin-bottom: 20px;
 }
 
-.create form {
+.doctor-login-form {
   display: flex;
   flex-direction: column;
 }
 
-.create label {
+.doctor-login-form label {
   margin-bottom: 15px;
 }
 
-.create label span {
+.doctor-login-form label span {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
 
-.create input,
-.create textarea {
+.doctor-login-form input {
   width: 100%;
   padding: 8px 10px;
   border: 1px solid #ccc;
@@ -39,12 +40,7 @@
   font-size: 1rem;
 }
 
-.create textarea {
-  resize: vertical;
-  min-height: 100px;
-}
-
-.create button {
+.login-btn {
   align-self: center;
   width: 120px;
   font-size: 1rem;
@@ -58,6 +54,12 @@
   transition: background 0.3s;
 }
 
-.create button:hover {
+.login-btn:hover {
   background-color: #3e1a8c;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
 }
