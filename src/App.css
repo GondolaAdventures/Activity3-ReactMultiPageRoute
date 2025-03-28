@@ -16,7 +16,7 @@
 .navbar h1 {
   margin: 0;
   font-size: 1.8rem;
-  color: #58249c;
+  color: #ff5d5d;
 }
 
 .nav-links {
@@ -35,7 +35,7 @@
 
 .nav-links a:hover,
 .nav-links a.active {
-  background: #58249c;
+  background: #ff5d5d;
   color: #fff;
   border-radius: 4px;
 }

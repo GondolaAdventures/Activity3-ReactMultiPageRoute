@@ -9,7 +9,7 @@
 
 /* Page title */
 .home h2 {
-  color: #58249c;
+  color: #ff5d5d;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -57,7 +57,7 @@
 }
 
 .create-btn {
-  background-color: #58249c;
+  background-color: #ff5d5d;
   color: #fff;
   padding: 8px 14px;
   border: none;
@@ -66,7 +66,7 @@
 }
 
 .create-btn:hover {
-  background-color: #3e1a8c;
+  background-color: rgb(42, 17, 97);
 }
 
 /* Posts list area */
@@ -113,11 +113,11 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  background-color: #58249c;
+  background-color: #ff5d5d;
   color: #fff;
   transition: background 0.3s;
 }
 
 .card-actions button:hover {
-  background-color: #3e1a8c;
+  background-color: #9b3b3b;
 }
