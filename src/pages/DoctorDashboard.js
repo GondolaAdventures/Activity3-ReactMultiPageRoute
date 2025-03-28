@@ -1,15 +1,19 @@
 // DoctorDashboard.js
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { collection, onSnapshot } from 'firebase/firestore'
 import { db } from '../firebase/config' // adjust as needed
 import './Home.css' // shared css
+import { ThemeContext } from './ThemeContext'
+import { getAuth, signOut } from 'firebase/auth'
 
 export default function DoctorDashboard() {
   const [posts, setPosts] = useState([])
   const [categoryFilter, setCategoryFilter] = useState('')
   const [statusFilter, setStatusFilter] = useState('')
   const navigate = useNavigate()
+  const { theme, toggleTheme } = useContext(ThemeContext)
+  const auth = getAuth()
 
   // Fetch all posts (since doctor sees all)
   useEffect(() => {
@@ -23,6 +27,15 @@ export default function DoctorDashboard() {
     })
     return () => unsubscribe()
   }, [])
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate('/landing');
+    } catch (err) {
+      console.error("Error signing out:", err);
+    }
+  };
 
   // Filter by category and status
   const filteredPosts = posts.filter((post) => {
@@ -42,7 +55,15 @@ export default function DoctorDashboard() {
   }
 
   return (
-    <div className="home">
+    <div className={`home ${theme}`}>
+      <div className="landing-header">
+        <button className="theme-toggle-btn" onClick={toggleTheme}>
+          Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
+        </button>
+        <button className="logout-btn" onClick={handleLogout}>
+          Log Out
+        </button>
+      </div>
       <h2>Doctor Dashboard</h2>
 
       {/* FILTER CONTROLS */}

@@ -1,5 +1,20 @@
 /* Home.css */
 
+*{
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Light theme (default) */
+.light {
+  background-color: #fff;
+  color: #000;
+}
+
+.dark {
+  background-color: #333;
+  color: #fff;
+}
+
 /* Container for the entire page */
 .home {
   max-width: 800px;
@@ -108,7 +123,7 @@
   gap: 10px;
 }
 
-.card-actions button {
+.card-btn {
   padding: 6px 12px;
   border: none;
   border-radius: 4px;
@@ -118,6 +133,54 @@
   transition: background 0.3s;
 }
 
-.card-actions button:hover {
+.card-btn:hover {
   background-color: #9b3b3b;
+}
+
+.logout-btn {
+  background-color: #ff5d5d;
+  border: 2px solid #ff5d5d;
+  color: #ffff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+  margin: 0;
+}
+
+/* Header container centers the title */
+.landing-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+.landing-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #ff5d5d;
+}
+
+/* Toggle button fixed to the far right of the viewport */
+.theme-toggle-btn {
+  background-color: transparent;
+  border: 2px solid #ff5d5d;
+  color: #ff5d5d;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+  margin: 0; /* Remove any default margins */
+}
+
+.theme-toggle-btn:hover{
+  background-color: #ff5d5d;
+  color: #fff;
 }

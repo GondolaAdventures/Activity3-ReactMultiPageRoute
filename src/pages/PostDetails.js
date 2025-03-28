@@ -1,10 +1,11 @@
 // PostDetails.js
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { doc, getDoc, updateDoc } from 'firebase/firestore'
-import { getAuth } from 'firebase/auth'
+import { getAuth, signOut } from 'firebase/auth'
 import { db } from '../firebase/config' // adjust path if needed
 import './PostDetails.css'
+import { ThemeContext } from './ThemeContext'
 
 export default function PostDetails() {
   const { id } = useParams()
@@ -12,6 +13,7 @@ export default function PostDetails() {
   const [newMessage, setNewMessage] = useState('')
   const [error, setError] = useState(null)
   const navigate = useNavigate()
+  const { theme, toggleTheme } = useContext(ThemeContext)
 
   // Current user
   const auth = getAuth()
@@ -85,9 +87,26 @@ export default function PostDetails() {
   if (error) return <div className="post-details-error">{error}</div>
   if (!post) return <div className="post-details-loading">Loading...</div>
 
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate('/landing');
+    } catch (err) {
+      console.error("Error signing out:", err);
+    }
+  };
+
   // 4) Render the post + conversation
   return (
-    <div className="post-details-container">
+    <div className={`post-details-container ${theme}`}>
+      <div className="landing-header">
+        <button className="theme-toggle-btn" onClick={toggleTheme}>
+          Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
+        </button>
+        <button className="logout-btn" onClick={handleLogout}>
+          Log Out
+        </button>
+      </div>
       <h2>Post Details</h2>
       <p><strong>Category:</strong> {post.category}</p>
       <p><strong>Status:</strong> {post.status}</p>

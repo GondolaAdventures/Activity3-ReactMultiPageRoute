@@ -1,10 +1,11 @@
 // PatientHome.js
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { collection, onSnapshot, doc, deleteDoc } from 'firebase/firestore'
-import { getAuth } from 'firebase/auth'
+import { getAuth, signOut } from 'firebase/auth'
 import { db } from '../firebase/config'
 import './Home.css'
+import { ThemeContext } from './ThemeContext'
 
 export default function PatientHome() {
   const [posts, setPosts] = useState([])
@@ -12,6 +13,7 @@ export default function PatientHome() {
   const navigate = useNavigate()
   const auth = getAuth()
   const user = auth.currentUser
+  const { theme, toggleTheme } = useContext(ThemeContext)
 
   useEffect(() => {
     if (!user) return
@@ -31,6 +33,15 @@ export default function PatientHome() {
     })
     return () => unsubscribe()
   }, [user])
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate('/landing');
+    } catch (err) {
+      console.error("Error signing out:", err);
+    }
+  };
 
   // Filter by category
   const filteredPosts = posts.filter((post) => {
@@ -58,7 +69,15 @@ export default function PatientHome() {
   }
 
   return (
-    <div className="home">
+    <div className={`home ${theme}`}>
+      <div className="landing-header">
+        <button className="theme-toggle-btn" onClick={toggleTheme}>
+          Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
+        </button>
+        <button className="logout-btn" onClick={handleLogout}>
+          Log Out
+        </button>
+      </div>
       <h2>My Posts</h2>
 
       <div className="patient-controls">
@@ -101,10 +120,10 @@ export default function PatientHome() {
               </div>
 
               <div className="card-actions">
-                <button onClick={() => handleEditPost(post.id)}>
+                <button class = "card-btn" onClick={() => handleEditPost(post.id)}>
                   Edit
                 </button>
-                <button onClick={() => handleDeletePost(post.id)}>
+                <button class = "card-btn" onClick={() => handleDeletePost(post.id)}>
                   Delete
                 </button>
               </div>

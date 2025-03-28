@@ -1,4 +1,18 @@
 /* DoctorLogin.css */
+*{
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Light theme (default) */
+.light {
+  background-color: #fff;
+  color: #000;
+}
+
+.dark {
+  background-color: #333;
+  color: #fff;
+}
 
 .doctor-login-container {
   max-width: 480px;
@@ -33,7 +47,7 @@
 }
 
 .doctor-login-form input {
-  width: 100%;
+  width: 90%;
   padding: 8px 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -62,4 +76,40 @@
   color: red;
   text-align: center;
   margin-top: 10px;
+}
+
+/* Header container centers the title */
+.landing-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+.landing-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #ff5d5d;
+}
+
+/* Toggle button fixed to the far right of the viewport */
+.theme-toggle-btn {
+  background-color: transparent;
+  border: 2px solid #ff5d5d;
+  color: #ff5d5d;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+  margin: 0; /* Remove any default margins */
+}
+
+.theme-toggle-btn:hover{
+  background-color: #ff5d5d;
+  color: #fff;
 }

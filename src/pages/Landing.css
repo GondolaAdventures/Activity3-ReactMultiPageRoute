@@ -19,21 +19,21 @@
 }
 
 /* Header container centers the title */
-.landing-header {
+.landing-headerMain {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.landing-header h1 {
+.landing-headerMain h1 {
   margin: 0;
   font-size: 1.8rem;
   color: #ff5d5d;
 }
 
 /* Toggle button fixed to the far right of the viewport */
-.theme-toggle-btn {
+.theme-toggle-btn2 {
   position: fixed;
   top: 20px;
   right: 20px;
@@ -47,7 +47,7 @@
   transition: all 0.3s;
 }
 
-.theme-toggle-btn:hover {
+.theme-toggle-btn2:hover {
   background-color: #ff5d5d;
   color: #fff;
 }

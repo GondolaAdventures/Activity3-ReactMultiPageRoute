@@ -1,10 +1,11 @@
 // PatientSignup.js
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { doc, setDoc } from 'firebase/firestore'
-import { db } from '../../firebase/config' // adjust path as needed
-import './PatientSignup.css' // Or rename as you like
+import { db } from '../../firebase/config'
+import './PatientSignup.css'
+import { ThemeContext } from '../ThemeContext'
 
 export default function PatientSignup() {
   const [displayName, setDisplayName] = useState('')
@@ -13,10 +14,11 @@ export default function PatientSignup() {
   const [category, setCategory] = useState('') // Sickness category
   const [error, setError] = useState(null)
   const [isPending, setIsPending] = useState(false)
+  const { theme, toggleTheme } = useContext(ThemeContext)
 
   const navigate = useNavigate()
   
-  // You can define a set of categories or fetch from elsewhere
+  // define a set of categories or fetch from elsewhere
   const categories = ['Cardio', 'Neuro', 'Pulmo', 'Ortho']
 
   const handleSubmit = async (e) => {
@@ -45,7 +47,7 @@ export default function PatientSignup() {
         displayName,
         email,
         category,
-        role: 'patient',  // optional, for clarity
+        role: 'patient',
       })
 
       // 4) Redirect to patient home (or wherever)
@@ -58,7 +60,12 @@ export default function PatientSignup() {
   }
 
   return (
-    <div className="patient-signup">
+    <div className={`patient-signup ${theme}`}>
+      <div className="landing-header">
+        <button className="theme-toggle-btn" onClick={toggleTheme}>
+          Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
+        </button>
+      </div>
       <h2 className="page-title">Patient Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <label>
@@ -109,8 +116,8 @@ export default function PatientSignup() {
 
         {error && <p className="error">{error}</p>}
 
-        {!isPending && <button type="submit">Sign Up</button>}
-        {isPending && <button type="submit" disabled>Loading...</button>}
+        {!isPending && <button type="submit" class ="signbtn">Sign Up</button>}
+        {isPending && <button class = "createbtn" type="submit" disabled>Loading...</button>}
       </form>
     </div>
   )

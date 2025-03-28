@@ -1,8 +1,9 @@
 // PatientLogin.js
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import './PatientLogin.css' // Adjust the import path as needed
+import { ThemeContext } from '../ThemeContext'
 
 export default function PatientLogin() {
   const [email, setEmail] = useState('')
@@ -10,6 +11,7 @@ export default function PatientLogin() {
   const [error, setError] = useState(null)
   const [isPending, setIsPending] = useState(false)
   const navigate = useNavigate()
+  const { theme, toggleTheme } = useContext(ThemeContext)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -31,10 +33,15 @@ export default function PatientLogin() {
   }
 
   return (
-    <div className="patient-login-container">
+    <div className={`patient-login-container ${theme}`}>
+      <div className="landing-header">
+        <button className="theme-toggle-btn" onClick={toggleTheme}>
+          Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
+        </button>
+      </div>
       <h2 className="page-title">Patient Log In</h2>
       
-      <form onSubmit={handleSubmit} className="patient-login-form">
+      <form onSubmit={handleSubmit} className={`patient-login-form ${theme}`}>
         <label>
           <span>Email:</span>
           <input 

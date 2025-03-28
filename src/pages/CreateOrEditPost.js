@@ -1,16 +1,18 @@
 // CreateOrEditPost.js
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { doc, getDoc, addDoc, collection, updateDoc } from 'firebase/firestore'
-import { getAuth } from 'firebase/auth'
+import { getAuth, signOut } from 'firebase/auth'
 import { db } from '../firebase/config'
 import './CreateOrEditPost.css'
+import { ThemeContext } from './ThemeContext'
 
 export default function CreateOrEditPost() {
   const { id } = useParams()              // If this exists, we’re editing
   const navigate = useNavigate()
   const auth = getAuth()
   const user = auth.currentUser
+  const { theme, toggleTheme } = useContext(ThemeContext)
 
   // Form fields
   const [content, setContent] = useState('')
@@ -94,10 +96,27 @@ export default function CreateOrEditPost() {
     }
   }
 
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate('/landing');
+    } catch (err) {
+      console.error("Error signing out:", err);
+    }
+  };
+
   // 4) Render any error or the form
   if (error) {
     return (
-      <div className="create-or-edit">
+      <div className={`create-or-edit ${theme}`}>
+        <div className="landing-header">
+        <button className="theme-toggle-btn" onClick={toggleTheme}>
+          Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
+        </button>
+        <button className="logout-btn" onClick={handleLogout}>
+          Log Out
+        </button>
+      </div>
         <h2 className="page-title">{pageTitle}</h2>
         <p className="error">{error}</p>
       </div>
@@ -105,7 +124,15 @@ export default function CreateOrEditPost() {
   }
 
   return (
-    <div className="create-or-edit">
+    <div className={`create-or-edit ${theme}`}>
+      <div className="landing-header">
+        <button className="theme-toggle-btn" onClick={toggleTheme}>
+          Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
+        </button>
+        <button className="logout-btn" onClick={handleLogout}>
+          Log Out
+        </button>
+      </div>
       <h2 className="page-title">{pageTitle}</h2>
       <form onSubmit={handleSubmit}>
         <label>
@@ -136,12 +163,12 @@ export default function CreateOrEditPost() {
         {error && <p className="error">{error}</p>}
 
         {!isPending && (
-          <button type="submit">
+          <button type="submit" class = "createbtn">
             {id ? 'Update Post' : 'Create Post'}
           </button>
         )}
         {isPending && (
-          <button type="submit" disabled>
+          <button  class = "createbtn" type="submit" disabled>
             Saving...
           </button>
         )}

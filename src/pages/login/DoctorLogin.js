@@ -1,8 +1,9 @@
 // DoctorLogin.js
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import './DoctorLogin.css' // Make sure the path is correct
+import { ThemeContext } from '../ThemeContext'
 
 export default function DoctorLogin() {
   const [email, setEmail] = useState('')
@@ -10,6 +11,7 @@ export default function DoctorLogin() {
   const [error, setError] = useState(null)
   const [isPending, setIsPending] = useState(false)
   const navigate = useNavigate()
+  const { theme, toggleTheme } = useContext(ThemeContext)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -39,10 +41,15 @@ export default function DoctorLogin() {
   }
 
   return (
-    <div className="doctor-login-container">
+    <div className={`doctor-login-container ${theme}`}>
+      <div className="landing-header">
+        <button className="theme-toggle-btn" onClick={toggleTheme}>
+          Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
+        </button>
+      </div>
       <h2 className="page-title">Doctor Log In</h2>
       
-      <form onSubmit={handleSubmit} className="doctor-login-form">
+      <form onSubmit={handleSubmit} className={`doctor-login-form ${theme}`}>
         <label>
           <span>Email:</span>
           <input

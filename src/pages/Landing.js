@@ -9,9 +9,9 @@ export default function Landing() {
 
   return (
     <div className={`landing ${theme}`}>
-      <div className="landing-header">
+      <div className="landing-headerMain">
         <h1>Team Fortress Hospital</h1>
-        <button className="theme-toggle-btn" onClick={toggleTheme}>
+        <button className="theme-toggle-btn2" onClick={toggleTheme}>
           Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
         </button>
       </div>
