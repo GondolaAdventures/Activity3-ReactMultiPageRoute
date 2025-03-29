@@ -1,99 +1,73 @@
-# Multipage React Site with Routing, Firebase Integration, and Authentication
+# Team Fortress Hospital - A Hospital-Themed React App
 
-This repository contains a multipage React application demonstrating routing, Firebase integration, and basic authentication (including Log-In and Sign-Up pages).
+This repository contains a hospital-themed React application featuring **Doctor** and **Patient** workflows, Firebase integration, and enhanced UI/UX elements such as **dark mode**. Users can authenticate (sign up, log in, log out), create and view patient concerns, and filter or update their posts based on status and sickness category.
 
-## Overview
+## Key Features
 
-- **Routing**: Implemented using `react-router-dom` v6 for smooth navigation.
-- **Firebase**: Uses Firebase Firestore for data management and Firebase Hosting for deployment.
-- **Authentication**: Includes a Log-In and Sign-Up page to handle basic user registration and access.
-- **Live Demo**: Visit [https://articledemo-5edb7.web.app](https://articledemo-5edb7.web.app) to see the deployed site.
+1. **Doctor/Patient Workflows**  
+   - **Doctor Role**: Logs in using a special `@tf.doctor.com` email domain. Can view all patient posts, filter by category/status, reply to patient concerns, and mark them as resolved.  
+   - **Patient Role**: Can register and log in with any email. Creates new posts (concerns) tied to a sickness category, can edit/delete their own posts, and sees real-time updates when doctors reply or mark concerns resolved.
 
-## Features
+2. **Dark Mode / Light Mode**  
+   - **Toggle** between light and dark themes globally, using a custom `ThemeContext`.
 
-1. **Multiple Pages**  
-   - Home, About, Contact, Article pages, and a 404 NotFound page for unmatched routes.
-2. **Firebase Firestore**  
-   - Create, edit, and delete articles. Real-time updates thanks to Firestore’s listener.
-3. **User Authentication**  
-   - Log-In and Sign-Up pages for basic user credential handling.
-4. **Responsive Design**  
-   - Modern styling with hover effects, consistent layout, and adaptability across devices.
+3. **Firebase Integration**  
+   - **Authentication**: Sign up, log in, and log out with Firebase Auth.  
+   - **Firestore**: Stores posts (concerns) with fields for category, status, createdBy, doctor/patient replies, etc.
 
-## Installation and Setup
+4. **Log Out Functionality**  
+   - Users can log out, clearing their session and returning them to the landing page.
+
+5. **Color-Coded Status**  
+   - Posts with a “resolved” status appear in green; “unresolved” in red for quick visual distinction.
+
+6. **Filtering & Sorting**  
+   - Doctors can filter posts by sickness category and resolution status.  
+   - Patients can filter their own posts by category, easily finding specific concerns.
+
+## Project Structure
+- **Landing Page**: Prompt to choose Doctor or Patient role.
+- **Doctor Login**: Allows only `@tf.doctor.com` addresses.
+- **Patient Login & Signup**: Allows standard email addresses, sign-up includes sickness category selection.
+- **Doctor Dashboard**: View and filter all patient posts; mark as resolved; reply to concerns.
+- **Patient Home**: Manage own posts, create or edit concerns, see real-time updates when doctors reply.
+- **Post Details**: Displays individual post info and conversation thread between patient and doctor.
+- **ThemeContext**: Provides global dark/light mode state.
+
+## Installation & Setup
 
 1. **Clone the Repository**
-
    ```bash
-   git clone https://github.com/GondolaAdventures/Activity3-ReactMultiPageRoute.git
+   git clone https://github.com/YourUsername/TeamFortressHospital.git
    ```
-   *(Replace with your actual repository URL.)*
-
-2. **Navigate into the Project Directory**
-
+2. **Install Dependencies**
    ```bash
-   cd Activity3-ReactMultiPageRoute
-   ```
-
-3. **Install Dependencies**
-
-   ```bash
+   cd TeamFortressHospital
    npm install
    ```
-
-4. **Install React Router, Firebase Tools, and Related Packages**  
-   - **React Router DOM** is likely installed already, but if needed:
-     ```bash
-     npm install react-router-dom
-     ```
-   - **Firebase** for Firestore and authentication:
-     ```bash
-     npm install firebase
-     ```
-   - **Firebase Tools (CLI) globally** to deploy and manage Firebase:
-     ```bash
-     npm install -g firebase-tools
-     ```
-
-5. **Firebase Setup**  
-   - **Log in** to Firebase in your terminal:
-     ```bash
-     firebase login
-     ```
-   - **Initialize** Firebase in your project (choose Firestore, Hosting, etc. as needed):
-     ```bash
-     firebase init
-     ```
-   - **Deploy Firestore Rules** only (if you have custom security rules):
-     ```bash
-     firebase deploy --only firestore:rules
-     ```
-
-6. **Run the App Locally**
-
+3. **Set Up Firebase**  
+   - Create a new Firebase project.  
+   - Copy your Firebase config into a `firebase/config.js` file.  
+   - Enable Authentication (Email/Password) and Firestore in the Firebase console.
+4. **Run Locally**
    ```bash
    npm start
    ```
-   This starts the development server at [http://localhost:3000](http://localhost:3000).
+   - Open [http://localhost:3000](http://localhost:3000) in your browser.
+5. **Build & Deploy**  
+   ```bash
+   npm run build
+   firebase deploy
+   ```
+   - Update your Firebase configuration if you plan to use Firebase Hosting.
 
-7. **Build and Deploy**
+## Usage Overview
 
-   - **Create a Production Build**:
-     ```bash
-     npm run build
-     ```
-   - **Deploy to Firebase**:
-     ```bash
-     firebase deploy
-     ```
-   This will upload your build folder to Firebase Hosting. Your live URL should appear in the terminal or Firebase console.
+- **Landing Page**: Choose **Doctor** or **Patient**.  
+- **Doctor Login**: Enter an `@tf.doctor.com` email. Then access the **Doctor Dashboard**, where all concerns are visible.  
+- **Patient Login/Signup**: Register with a normal email, choose your **sickness category**, then create or manage your posts via **Patient Home**.  
+- **Create/Edit Post**: Patients can create new concerns or edit existing ones.  
+- **Dark Mode Toggle**: Switch the entire site theme to light or dark at the top of the page or a designated toggle button.  
+- **Log Out**: Ends the user session, returning to the landing page.
 
-## Usage
-
-- **Home Page**: Displays a list of articles (or a welcome message).  
-- **Log-In / Sign-Up**: Allows users to register or sign into the application.  
-- **Article Creation/Management**: If implemented, users can create, edit, or remove articles.  
-- **Contact / About**: Example static pages showcasing routing.  
-- **404 NotFound**: Displays a custom message for invalid routes.
-
-**Happy coding!** 🚀
+**Enjoy building and extending this hospital-themed React + Firebase app!**
