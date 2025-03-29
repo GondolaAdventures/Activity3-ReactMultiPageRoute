@@ -38,11 +38,11 @@ This repository contains a hospital-themed React application featuring **Doctor*
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/YourUsername/TeamFortressHospital.git
+   git clone https://github.com/GondolaAdventures/Activity3-ReactMultiPageRoute.git
    ```
 2. **Install Dependencies**
    ```bash
-   cd TeamFortressHospital
+   cd Activity3-ReactMultiPageRoute
    npm install
    ```
 3. **Set Up Firebase**  
