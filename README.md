@@ -25,6 +25,9 @@ This repository contains a hospital-themed React application featuring **Doctor*
    - Doctors can filter posts by sickness category and resolution status.  
    - Patients can filter their own posts by category, easily finding specific concerns.
 
+7. **Live Demo**
+   - Visit [https://articledemo-5edb7.web.app](https://articledemo-5edb7.web.app) to see the deployed site.
+
 ## Project Structure
 - **Landing Page**: Prompt to choose Doctor or Patient role.
 - **Doctor Login**: Allows only `@tf.doctor.com` addresses.
