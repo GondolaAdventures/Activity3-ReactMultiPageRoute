@@ -4,10 +4,7 @@
 
 A hospital-themed React application featuring distinct Doctor and Patient workflows, Firebase integration for authentication and data storage, and a user-friendly interface with features like dark/light mode toggling.
 
-<!-- **IMPORTANT:** Make sure you have created an 'images' folder in your repo,
-     added 'Team_Fortress_Hospital_Poster.jpg' to it, committed, and pushed.
-     Then this line will display the image correctly. -->
-![Team Fortress Hospital Poster](./images/Team_Fortress_Hospital_Poster.jpg "Team Fortress Hospital")
+![Team Fortress Hospital Poster](https://raw.githubusercontent.com/GondolaAdventures/Activity3-ReactMultiPageRoute/main/public/Team_Fortress_Hospital_Poster.jpg "Team Fortress Hospital")
 
 ## Key Features
 
@@ -25,9 +22,9 @@ A hospital-themed React application featuring distinct Doctor and Patient workfl
 
 ## Tech Stack
 
-*   **Frontend**: React, React Router DOM, CSS
+*   **Frontend**: React, React Router DOM, CSS, Web Vitals
 *   **Backend**: Firebase (Authentication, Firestore)
-*   **Styling**: CSS Modules (implied by `.css` imports)
+*   **Tooling**: Create React App (React Scripts), Firebase CLI
 *   **Deployment**: Firebase Hosting
 
 ## Live Demo
@@ -43,7 +40,7 @@ Follow these steps to set up the project locally.
 *   Node.js and npm (or yarn) installed.
 *   Git installed.
 *   A Firebase account.
-*   Firebase CLI installed (`npm install -g firebase-tools`).
+*   Firebase CLI installed globally (see step 3 below).
 
 **Installation & Setup:**
 
@@ -53,13 +50,36 @@ Follow these steps to set up the project locally.
     cd Activity3-ReactMultiPageRoute
     ```
 
-2.  **Install Dependencies:**
+2.  **Install Project Dependencies:**
+    *(This single command installs all necessary packages listed in your `package.json`, including React, Router, Firebase, etc.)*
     ```bash
     npm install
     ```
-    *(This should install React, React Router, Firebase, etc., as defined in `package.json`)*
+    *Alternatively, or if needed, you can install specific core packages individually (though `npm install` is usually sufficient):*
+    ```bash
+    # Installs the scripts and configurations used by Create React App
+    npm install react-scripts@latest
+    # Installs the library for routing in React applications
+    npm install react-router-dom
+    # Installs a library for measuring web performance metrics
+    npm install web-vitals
+    # Installs the Firebase JavaScript SDK
+    npm install firebase
+    ```
 
-3.  **Set Up Firebase:**
+3.  **Install Firebase CLI Globally:**
+    *(This tool allows you to interact with your Firebase projects from the command line. The `-g` flag installs it globally on your system.)*
+    ```bash
+    npm install -g firebase-tools
+    ```
+
+4.  **Log in to Firebase:**
+    *(Authenticates the Firebase CLI with your Firebase account.)*
+    ```bash
+    firebase login
+    ```
+
+5.  **Set Up Firebase Project Configuration:**
     *   Create a new project on the [Firebase Console](https://console.firebase.google.com/).
     *   Enable **Authentication** (choose the Email/Password sign-in method).
     *   Enable **Firestore Database** (start in test mode for development, remember to set up security rules for production).
@@ -91,7 +111,14 @@ Follow these steps to set up the project locally.
         export { db, auth };
         ```
 
-4.  **Run Locally:**
+6.  **Initialize Firebase in Your Local Project (Optional but Recommended for Deployment):**
+    *(Links your local project directory to your Firebase project. Primarily needed for deployment.)*
+    ```bash
+    firebase init
+    ```
+    *   Follow the prompts. Choose "Hosting" when asked which features you want to set up. Select the Firebase project you created earlier. You can configure other settings like the public directory (usually `build`) and single-page app rewrites here if you plan to deploy using Firebase Hosting.
+
+7.  **Run Locally:**
     ```bash
     npm start
     ```
@@ -99,30 +126,19 @@ Follow these steps to set up the project locally.
 
 **Deployment (Firebase Hosting):**
 
-1.  **Log in to Firebase CLI:**
-    ```bash
-    firebase login
-    ```
+*(Assumes you have already run `firebase login` and `firebase init hosting` as described in the setup steps)*
 
-2.  **Initialize Firebase in your project (if not already done):**
-    ```bash
-    firebase init hosting
-    ```
-    *   Select your Firebase project.
-    *   Specify `build` as your public directory.
-    *   Configure as a single-page app (rewrite all urls to /index.html): Yes.
-    *   Set up automatic builds and deploys with GitHub?: Choose No for now unless you want to set that up.
-
-3.  **Build the React App:**
+1.  **Build the React App for Production:**
+    *(This creates an optimized `build` folder containing your static assets.)*
     ```bash
     npm run build
     ```
 
-4.  **Deploy to Firebase Hosting:**
+2.  **Deploy to Firebase Hosting:**
     ```bash
     firebase deploy
     ```
-    *   The CLI will provide you with the URL of your deployed site.
+    *   The CLI will upload the contents of your `build` folder and provide you with the URL of your live site.
 
 ## Usage Overview
 
