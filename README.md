@@ -47,6 +47,11 @@ This repository contains a hospital-themed React application featuring **Doctor*
    ```bash
    cd Activity3-ReactMultiPageRoute
    npm install
+   npm install react-scripts@latest
+   npm install react-router-dom
+   npm install web-vitals
+   npm install firebase
+   npm install -g firebase-tools
    ```
 3. **Set Up Firebase**  
    - Create a new Firebase project.  
@@ -59,6 +64,8 @@ This repository contains a hospital-themed React application featuring **Doctor*
    - Open [http://localhost:3000](http://localhost:3000) in your browser.
 5. **Build & Deploy**  
    ```bash
+   firebase login
+   firebase init
    npm run build
    firebase deploy
    ```
